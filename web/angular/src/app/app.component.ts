@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray,transferArrayItem} from '@angular/cdk/drag-drop';
 import { TaskService } from './task.service';
 import { Task, TODO_STATE, COMPLETED_STATE } from './task';
@@ -11,23 +11,25 @@ import { EditTaskComponent } from './dialog/edit-task/edit-task.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   todo : Task[]= [];
   done : Task[] = [];
 
- constructor( private taskService: TaskService, private dialog: MatDialog ) {
-  taskService.list()
-  .subscribe( tasks => {
-    tasks.forEach(t => {
-      if ( t.state == TODO_STATE ) {
-        this.todo.push(t);
-      } else {
-        this.done.push(t);
-      }
-    })
-  });
- }
+  constructor( private taskService: TaskService, private dialog: MatDialog ) {}
 
+  ngOnInit(): void {
+    this.taskService.list()
+      .subscribe( tasks => {
+        tasks.forEach(t => {
+          if ( t.state == TODO_STATE ) {
+            this.todo.push(t);
+          } else {
+            this.done.push(t);
+          }
+        })
+    });
+  }
+  
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
