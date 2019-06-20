@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const server = '192.168.56.102:27017'; // REPLACE WITH YOUR DB SERVER
-const database = 'tasks';      // REPLACE WITH YOUR DB NAME
+const server = process.env.DB_HOST + ":" + process.env.DB_PORT;
+const database = 'tasks';
 class Database {
 
     constructor() {
