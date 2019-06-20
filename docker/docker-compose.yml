@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: "mongo:4.0"
+    ports:
+      - "27017:27017"
+  api: 
+    build: .
+    volumes: 
+      - /media/sf_code/todo-app/api/node:/var:rw
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+ 

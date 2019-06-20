@@ -1,0 +1,82 @@
+<mat-toolbar color="primary">Todo List</mat-toolbar>
+
+<div class="container">
+  <div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title class="todo-header">
+            <div>
+              Todo
+            </div>
+            <div>
+                <button mat-mini-fab color="primary" (click)="create()">
+                  <mat-icon>add</mat-icon>
+                </button>    
+            </div>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <div
+          cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="todo"
+          [cdkDropListConnectedTo]="[doneList]"
+          class="list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="box box-content" *ngFor="let item of todo" cdkDrag>
+            <div>
+                <p class="title" [ngClass]="{'priority-high': item.priority > 2, 'priority-medium': item.priority == 2}">
+                  {{item.task}}   
+                </p>
+                <p class="description">
+                    {{item.description}}
+                </p>
+            </div>
+            <div>
+              <mat-icon matTooltip="Edit" class="button" color="primary" (click)="edit(item)">edit</mat-icon> 
+              <mat-icon matTooltip="Delete" class="button" color="warn" (click)="delete(item._id, todo)">delete</mat-icon> 
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <p class="note">
+          Drag and drop to change task state
+        </p>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+
+  <div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Completed</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <div
+          cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList]"
+          class="list completed"
+          (cdkDropListDropped)="drop($event)">
+          <div class="box box-content" *ngFor="let item of done" cdkDrag>
+              <div>
+                  <p class="title">
+                    {{item.task}}   
+                  </p>
+                  <p class="description">
+                      {{item.description}}
+                  </p>
+              </div>
+              <div>
+                <mat-icon matTooltip="Delete" class="button" color="warn" (click)="delete(item._id, done)">delete</mat-icon>    
+              </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
