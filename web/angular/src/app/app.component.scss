@@ -97,3 +97,12 @@
 .button {
   cursor: pointer;
 }
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+#github-logo {
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}

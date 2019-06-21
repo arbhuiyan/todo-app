@@ -1,21 +1,25 @@
-<mat-toolbar color="primary">Todo List</mat-toolbar>
+<mat-toolbar color="primary">
+  <span> Todo List </span>
+  <span class="spacer"></span>
+ <a href="https://github.com/arbhuiyan/todo-app" target="_blank">
+    <img src="/assets/github-logo.png" id="github-logo">
+ </a> 
+</mat-toolbar>
 
 <div class="container">
   <div>
     <mat-card>
-      <mat-card-header>
-        <mat-card-title class="todo-header">
-            <div>
-              Todo
-            </div>
-            <div>
-                <button mat-mini-fab color="primary" (click)="create()">
-                  <mat-icon>add</mat-icon>
-                </button>    
-            </div>
-        </mat-card-title>
-      </mat-card-header>
       <mat-card-content>
+          <div class="container">
+              <span class="mat-card-title">Todo</span>
+              <span class="spacer"></span>
+              <span>
+                  <button mat-mini-fab color="primary" (click)="create()">
+                      <mat-icon>add</mat-icon>
+                    </button>   
+              </span>
+          </div>
+
           <div
           cdkDropList
           #todoList="cdkDropList"
