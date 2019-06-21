@@ -11,19 +11,17 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { CreateTaskComponent } from './dialog/create-task/create-task.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { EditTaskComponent } from './dialog/edit-task/edit-task.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select'
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateOrUpdateFormComponent } from './create-or-update-form/create-or-update-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateTaskComponent,
-    EditTaskComponent
+    CreateOrUpdateFormComponent
   ],
   imports: [
     BrowserModule,
@@ -45,8 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    CreateTaskComponent,
-    EditTaskComponent
+    CreateOrUpdateFormComponent
   ]
 })
 export class AppModule { }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateTaskComponent } from './dialog/create-task/create-task.component';
-import { EditTaskComponent } from './dialog/edit-task/edit-task.component';
 import { CdkDragDrop, moveItemInArray,transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
+import { CreateOrUpdateFormComponent, TYPE_CREATE, TYPE_UPDATE } from './create-or-update-form/create-or-update-form.component';
 import { TaskService } from './task.service';
 import { Task, TODO_STATE, COMPLETED_STATE } from './task';
 
@@ -53,7 +52,9 @@ export class AppComponent implements OnInit {
   }
 
   create() {
-    this.dialog.open(CreateTaskComponent).afterClosed().subscribe(
+    this.dialog.open(CreateOrUpdateFormComponent, {
+      data: { type: TYPE_CREATE }
+    }).afterClosed().subscribe(
       (t) => {  
         if ( typeof t === "object" && t.hasOwnProperty("_id") ) {
           this.todo.push(t);
@@ -62,8 +63,11 @@ export class AppComponent implements OnInit {
   }
 
   edit(task: Task): void {
-    this.dialog.open(EditTaskComponent, {
-      data: task
+    this.dialog.open(CreateOrUpdateFormComponent, {
+      data: {
+        task: task,
+        type: TYPE_UPDATE
+      }
     });
   }
 
