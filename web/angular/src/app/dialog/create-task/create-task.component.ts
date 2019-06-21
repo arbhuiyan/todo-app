@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TaskService } from 'src/app/task.service';
-import { Task } from 'src/app/task';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TaskService } from 'src/app/task.service';
+import { Task, Priority, PRIORITIES } from 'src/app/task';
 
 @Component({
   selector: 'app-create-task',
@@ -12,6 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class CreateTaskComponent implements OnInit {
 
   createForm: FormGroup;
+  priorities: Priority[] = PRIORITIES;
 
   constructor(
     private fb: FormBuilder,

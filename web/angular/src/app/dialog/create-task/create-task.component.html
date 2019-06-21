@@ -6,20 +6,18 @@
       <mat-label>Task</mat-label>
       <input matInput placeholder="Title" formControlName="task">
       <mat-error>In required</mat-error>
-
     </mat-form-field>
     <br />
     <mat-form-field appearance="outline">
        <mat-label>Description</mat-label>
        <textarea matInput placeholder="Textarea" formControlName="description"></textarea>
+       <mat-error>In required</mat-error>
     </mat-form-field>
     <br />
     <mat-form-field appearance="outline">
-      <mat-select placeholder="Priority" value="1" formControlName="priority">
-      <mat-option value="1">Normal</mat-option>
-      <mat-option value="2">Medium</mat-option>
-      <mat-option value="3">High</mat-option>
-    </mat-select>
+      <mat-select placeholder="Priority" formControlName="priority">
+        <mat-option *ngFor="let priority of priorities" [value]="priority.value">{{priority.name}}</mat-option>
+      </mat-select>
     </mat-form-field>
   </div>
 
