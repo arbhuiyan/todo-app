@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {CdkDragDrop, moveItemInArray,transferArrayItem} from '@angular/cdk/drag-drop';
-import { TaskService } from './task.service';
-import { Task, TODO_STATE, COMPLETED_STATE } from './task';
-import { MatDialog } from '@angular/material/dialog';
 import { CreateTaskComponent } from './dialog/create-task/create-task.component';
 import { EditTaskComponent } from './dialog/edit-task/edit-task.component';
+import { CdkDragDrop, moveItemInArray,transferArrayItem } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
+import { TaskService } from './task.service';
+import { Task, TODO_STATE, COMPLETED_STATE } from './task';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import { EditTaskComponent } from './dialog/edit-task/edit-task.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  todo : Task[]= [];
+  todo : Task[] = [];
   done : Task[] = [];
 
   constructor( private taskService: TaskService, private dialog: MatDialog ) {}
@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
         this.taskService.edit( item._id, item )
         .subscribe(
           (item) => {
-            console.log(item);
             transferArrayItem(event.previousContainer.data,
               event.container.data,
               event.previousIndex,
@@ -63,7 +62,9 @@ export class AppComponent implements OnInit {
   }
 
   edit(task: Task): void {
-    this.dialog.open(EditTaskComponent);
+    this.dialog.open(EditTaskComponent, {
+      data: task
+    });
   }
 
   delete(taskId: string, source: Task[]): void {
