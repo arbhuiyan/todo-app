@@ -3,7 +3,7 @@ export interface Task {
  task: string,
  description: string,
  priority: number,
- state: string   
+ state?: string   
 }
 
 export const TODO_STATE = "todo";

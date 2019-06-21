@@ -54,7 +54,12 @@ export class AppComponent implements OnInit {
   }
 
   create() {
-    this.dialog.open(CreateTaskComponent);
+    this.dialog.open(CreateTaskComponent).afterClosed().subscribe(
+      (t) => {  
+        if ( typeof t === "object" && t.hasOwnProperty("_id") ) {
+          this.todo.push(t);
+        }
+    });
   }
 
   edit(task: Task): void {

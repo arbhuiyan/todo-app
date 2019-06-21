@@ -14,6 +14,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { CreateTaskComponent } from './dialog/create-task/create-task.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditTaskComponent } from './dialog/edit-task/edit-task.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select'
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { EditTaskComponent } from './dialog/edit-task/edit-task.component';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
