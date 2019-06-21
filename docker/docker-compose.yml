@@ -13,6 +13,7 @@ services:
     environment:
       - DB_HOST=192.168.56.102
       - DB_PORT=27017
+      - PORT=3000
     depends_on:
       - db
  
