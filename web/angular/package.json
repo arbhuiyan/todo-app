@@ -1,10 +1,12 @@
 {
-  "name": "angular",
-  "version": "0.0.0",
+  "name": "todo-app-web",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy:dev": "ng build && node deploy.js",
+    "deploy:prd": "ng build --prod && node deploy.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -25,6 +27,7 @@
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.3.3",
+    "tar": "^4.4.10",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
