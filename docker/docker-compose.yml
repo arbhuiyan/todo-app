@@ -7,7 +7,7 @@ services:
   api: 
     build: .
     volumes: 
-      - /media/sf_code/todo-app/api/node:/var:rw
+      - ../api/node:/var:rw
     ports:
       - "3000:3000"
     environment:
