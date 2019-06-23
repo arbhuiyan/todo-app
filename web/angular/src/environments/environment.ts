@@ -4,10 +4,8 @@
 
 export const environment = {
   production: false,
-  taskApiUrl: "api",
-  // taskApiUrl: "http://192.168.56.102:3000",
+  taskApiUrl: "/api",
   taskIdentifier: "id",
-  // taskIdentifier: "_id",
 };
 
 /*
