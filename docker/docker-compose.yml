@@ -5,15 +5,26 @@ services:
     ports:
       - "27017:27017"
   api: 
-    build: .
+    image: node:10.15.3-alpine
     volumes: 
       - ../api/node:/var:rw
+    expose:
+      - "3000" 
     ports:
       - "3000:3000"
     environment:
       - DB_HOST=db
       - DB_PORT=27017
       - PORT=3000
+    command: ["node", "var/bin/www"]
     depends_on:
       - db
- 
+  web: 
+    build: 
+      context: web/
+      args:
+        - APP_VERSION=0.0.1
+    ports:
+      - "80:80"
+    depends_on:
+      - api
