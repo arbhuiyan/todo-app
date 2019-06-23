@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,6 +20,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select'
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateOrUpdateFormComponent } from './create-or-update-form/create-or-update-form.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,8 @@ import { CreateOrUpdateFormComponent } from './create-or-update-form/create-or-u
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    //set Mock
+    !environment.production ? HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService, {put204: false}) : [], 
     MatToolbarModule,
     MatCardModule,
     DragDropModule,

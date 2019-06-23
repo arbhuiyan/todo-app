@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
         } else {
           item.state = TODO_STATE;
         }
-        this.taskService.edit( item._id, item )
+        this.taskService.edit( item.id, item )
         .subscribe(
           (item) => {
             transferArrayItem(event.previousContainer.data,
@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
       data: { type: TYPE_CREATE }
     }).afterClosed().subscribe(
       (t) => {  
-        if ( typeof t === "object" && t.hasOwnProperty("_id") ) {
+        if ( t instanceof Task ) {
           this.todo.push(t);
         }
     });
@@ -71,10 +71,10 @@ export class AppComponent implements OnInit {
     });
   }
 
-  delete(taskId: string, source: Task[]): void {
-    this.taskService.delete(taskId).subscribe(() => {
+  delete(task: Task, source: Task[]): void {
+    this.taskService.delete(task.id).subscribe(() => {
       source.forEach( (t, i) =>{
-        if (t._id == taskId) {
+        if (t.id == task.id) {
           source.splice(i, 1);
         }
       })

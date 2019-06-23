@@ -38,7 +38,7 @@
             </div>
             <div>
               <mat-icon matTooltip="Edit" class="button" color="primary" (click)="edit(item)">edit</mat-icon> 
-              <mat-icon matTooltip="Delete" class="button" color="warn" (click)="delete(item._id, todo)">delete</mat-icon> 
+              <mat-icon matTooltip="Delete" class="button" color="warn" (click)="delete(item, todo)">delete</mat-icon> 
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@
                   </p>
               </div>
               <div>
-                <mat-icon matTooltip="Delete" class="button" color="warn" (click)="delete(item._id, done)">delete</mat-icon>    
+                <mat-icon matTooltip="Delete" class="button" color="warn" (click)="delete(item, done)">delete</mat-icon>    
               </div>
           </div>
         </div>

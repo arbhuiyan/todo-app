@@ -3,8 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  taskApiUrl: "http://192.168.56.102:3000",
+  production: true,
+  taskApiUrl: "api",
+  // taskApiUrl: "http://192.168.56.102:3000",
+  taskIdentifier: "id",
+  // taskIdentifier: "_id",
 };
 
 /*

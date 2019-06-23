@@ -52,8 +52,9 @@ export class CreateOrUpdateFormComponent implements OnInit {
 
   update() {
     const { task, description, priority } = this.form.value;
-    const editedTask: Task = { task, description, priority };
-    this.taskService.edit( this.data.task._id, editedTask )
+    const id = this.data.task.id;
+    const editedTask: Task = { id, task, description, priority };
+    this.taskService.edit( this.data.task.id, editedTask )
       .subscribe(t => {
         this.data.task.task = t.task;
         this.data.task.description = t.description;
