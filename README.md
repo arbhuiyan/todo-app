@@ -1,7 +1,7 @@
 # Todo List Application. 
 ## A complete project with backend + fronted + Docker
 
-### Demo available on this link: http://arbhuiyan.altervista.org
+### Demo available on this link: https://arbhuiyan.github.io/todo-app-demo/
 
 #### System requirements:
 * Docker
